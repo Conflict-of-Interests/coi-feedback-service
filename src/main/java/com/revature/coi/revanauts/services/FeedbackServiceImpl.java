@@ -1,10 +1,10 @@
 package com.revature.coi.revanauts.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.revature.coi.revanauts.exceptions.BadRequestException;
 import com.revature.coi.revanauts.exceptions.ResourceCreationException;
 import com.revature.coi.revanauts.exceptions.ResourceNotFoundException;
+import com.revature.coi.revanauts.exceptions.ResourceUpdateException;
 import com.revature.coi.revanauts.models.Feedback;
 import com.revature.coi.revanauts.repos.FeedbackRepository;
 
@@ -58,6 +59,10 @@ public class FeedbackServiceImpl implements FeedbackService {
 	@Override
 	public Feedback getFeedbackById(Feedback feedback) {
 		
+		if(feedback == null || feedback.getId() <= 0) {
+			throw new BadRequestException("Invalid value provided in request");
+		}
+		
 		Optional<Feedback> _feedback = feedbackRepo.findById(feedback.getId());
 		
 		if(!_feedback.isPresent()) {
@@ -69,8 +74,9 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public Feedback addNewFeedback(@Valid Feedback feedback) {
+	public Feedback addNewFeedback(Feedback feedback) {
 		
+		feedback.setTimeGiven(LocalDateTime.now());
 		Feedback persistedFeedback = feedbackRepo.save(feedback);
 		
 		if(persistedFeedback.getId() == 0) {
@@ -87,7 +93,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 		Feedback updatedFeedback = feedbackRepo.save(feedback);
 		
 		if(updatedFeedback.getId() == 0) {
-			throw new ResourceCreationException("There was a problem during resource update");
+			throw new ResourceUpdateException("There was a problem during resource update");
 		}
 		
 		return updatedFeedback;
