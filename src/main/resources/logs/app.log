@@ -1,0 +1,96 @@
+14:47:59.832 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:48:00.045 [main] INFO  c.r.c.r.FeedbackServiceApplication - The following profiles are active: local
+14:48:01.183 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:48:01.306 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 109ms. Found 2 repository interfaces.
+14:48:01.532 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=d97564d4-5838-3a30-a329-be363f40408a
+14:48:01.680 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:48:01.765 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:48:02.170 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 2020 (http)
+14:48:02.179 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-2020"]
+14:48:02.179 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:48:02.180 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+14:48:02.251 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:48:02.251 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2185 ms
+14:48:02.412 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:48:02.498 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:48:02.503 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:feedback'
+14:48:02.630 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14:48:02.689 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.8.Final}
+14:48:02.791 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+14:48:02.903 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+14:48:03.776 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+14:48:03.780 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14:48:04.499 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14:48:04.656 [main] INFO  c.r.c.r.aspects.LoggingAspect - class com.revature.coi.revanauts.FeedbackServiceApplication$$EnhancerBySpringCGLIB$$18007738.api invoked at 14:48:04.656
+14:48:04.656 [main] INFO  c.r.c.r.aspects.LoggingAspect - Input arguments: []
+14:48:04.667 [main] INFO  c.r.c.r.aspects.LoggingAspect - class com.revature.coi.revanauts.FeedbackServiceApplication$$EnhancerBySpringCGLIB$$18007738.api successfully returned at 14:48:04.667
+14:48:04.667 [main] INFO  c.r.c.r.aspects.LoggingAspect - Object returned: springfox.documentation.spring.web.plugins.Docket@333a44f2
+14:48:04.682 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+14:48:04.682 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+14:48:04.688 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+14:48:04.688 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+14:48:04.838 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+14:48:05.346 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+14:48:05.363 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+14:48:05.373 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+14:48:05.572 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-2020"]
+14:48:05.587 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 2020 (http) with context path ''
+14:48:05.591 [main] INFO  c.r.c.r.FeedbackServiceApplication - Started FeedbackServiceApplication in 6.434 seconds (JVM running for 7.104)
+14:48:16.427 [RMI TCP Connection(6)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+14:48:16.434 [RMI TCP Connection(6)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+14:48:16.441 [RMI TCP Connection(6)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14:48:16.444 [RMI TCP Connection(6)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14:48:16.449 [RMI TCP Connection(6)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+14:48:16.451 [RMI TCP Connection(6)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-2020"]
+14:48:16.459 [RMI TCP Connection(6)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+14:48:16.463 [RMI TCP Connection(6)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-2020"]
+14:48:16.466 [RMI TCP Connection(6)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-2020"]
+14:48:19.777 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:48:19.969 [main] INFO  c.r.c.r.FeedbackServiceApplication - The following profiles are active: local
+14:48:20.735 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:48:20.800 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 59ms. Found 2 repository interfaces.
+14:48:20.981 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=d97564d4-5838-3a30-a329-be363f40408a
+14:48:21.124 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:48:21.186 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:48:21.359 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 2020 (http)
+14:48:21.367 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-2020"]
+14:48:21.367 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:48:21.368 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+14:48:21.453 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:48:21.453 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1468 ms
+14:48:21.613 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:48:21.700 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:48:21.705 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:feedback'
+14:48:21.822 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14:48:21.865 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.8.Final}
+14:48:21.953 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+14:48:22.038 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+14:48:22.688 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+14:48:22.697 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14:48:23.473 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14:48:23.596 [main] INFO  c.r.c.r.aspects.LoggingAspect - class com.revature.coi.revanauts.FeedbackServiceApplication$$EnhancerBySpringCGLIB$$f6c0f011.api invoked at 14:48:23.596
+14:48:23.596 [main] INFO  c.r.c.r.aspects.LoggingAspect - Input arguments: []
+14:48:23.605 [main] INFO  c.r.c.r.aspects.LoggingAspect - class com.revature.coi.revanauts.FeedbackServiceApplication$$EnhancerBySpringCGLIB$$f6c0f011.api successfully returned at 14:48:23.605
+14:48:23.606 [main] INFO  c.r.c.r.aspects.LoggingAspect - Object returned: springfox.documentation.spring.web.plugins.Docket@b77b0a0
+14:48:23.615 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+14:48:23.616 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+14:48:23.619 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+14:48:23.620 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+14:48:23.734 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+14:48:24.173 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+14:48:24.187 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+14:48:24.195 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+14:48:24.341 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-2020"]
+14:48:24.356 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 2020 (http) with context path ''
+14:48:24.359 [main] INFO  c.r.c.r.FeedbackServiceApplication - Started FeedbackServiceApplication in 5.142 seconds (JVM running for 5.717)
+14:48:37.036 [http-nio-2020-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:48:37.037 [http-nio-2020-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:48:37.049 [http-nio-2020-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 12 ms
+14:48:37.077 [http-nio-2020-exec-1] INFO  c.r.c.r.aspects.LoggingAspect - class com.revature.coi.revanauts.controllers.SkillControllerImpl.getAllSkills invoked at 14:48:37.077
+14:48:37.078 [http-nio-2020-exec-1] INFO  c.r.c.r.aspects.LoggingAspect - Input arguments: []
+14:48:37.084 [http-nio-2020-exec-1] INFO  c.r.c.r.aspects.LoggingAspect - class com.revature.coi.revanauts.services.SkillServiceImpl.getAllSkills invoked at 14:48:37.084
+14:48:37.084 [http-nio-2020-exec-1] INFO  c.r.c.r.aspects.LoggingAspect - Input arguments: []
+14:48:37.214 [http-nio-2020-exec-1] INFO  c.r.c.r.aspects.LoggingAspect - class com.revature.coi.revanauts.services.SkillServiceImpl.getAllSkills successfully returned at 14:48:37.214
+14:48:37.214 [http-nio-2020-exec-1] INFO  c.r.c.r.aspects.LoggingAspect - Object returned: [Skill [id=1, name=Communication Skills, description=Verbal, Non-Verbal, Listening Skills, Presentation, Business Writing, Storytelling, Visual Communication, improvementTips=], Skill [id=2, name=Work Ethics, description=Discipline, Time Management, Business Etiquettes, Respect, Self-Motivation, Positive Attitude, Adaptability, improvementTips=], Skill [id=3, name=Critical Thinking, description=Problem Solving, Creative Thinking, Research, Decision Making, Systems Thinking, improvementTips=], Skill [id=4, name=Leadership Skills, description=Conflict Resolution, Motivating, Negotiation, Delegation, improvementTips=], Skill [id=5, name=Teamwork, description=Collaboration, Empathy, Networking, Team Building, Interpersonal Skills, Facilitation, improvementTips=]]
+14:48:37.227 [http-nio-2020-exec-1] INFO  c.r.c.r.aspects.LoggingAspect - class com.revature.coi.revanauts.controllers.SkillControllerImpl.getAllSkills successfully returned at 14:48:37.227
+14:48:37.227 [http-nio-2020-exec-1] INFO  c.r.c.r.aspects.LoggingAspect - Object returned: [Skill [id=1, name=Communication Skills, description=Verbal, Non-Verbal, Listening Skills, Presentation, Business Writing, Storytelling, Visual Communication, improvementTips=], Skill [id=2, name=Work Ethics, description=Discipline, Time Management, Business Etiquettes, Respect, Self-Motivation, Positive Attitude, Adaptability, improvementTips=], Skill [id=3, name=Critical Thinking, description=Problem Solving, Creative Thinking, Research, Decision Making, Systems Thinking, improvementTips=], Skill [id=4, name=Leadership Skills, description=Conflict Resolution, Motivating, Negotiation, Delegation, improvementTips=], Skill [id=5, name=Teamwork, description=Collaboration, Empathy, Networking, Team Building, Interpersonal Skills, Facilitation, improvementTips=]]
