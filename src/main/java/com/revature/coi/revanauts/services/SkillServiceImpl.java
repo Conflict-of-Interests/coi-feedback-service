@@ -37,13 +37,13 @@ public class SkillServiceImpl implements SkillService {
 	}
 
 	@Override
-	public Skill getSkillById(Skill skill) {
+	public Skill getSkillById(long skillId) {
 		
-		if(skill == null || skill.getId() <= 0) {
+		if(skillId <= 0) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
 		}
 		
-		Optional<Skill> _skill = skillRepo.findById(skill.getId());
+		Optional<Skill> _skill = skillRepo.findById(skillId);
 		
 		if(!_skill.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No skill found with provided id");
@@ -54,13 +54,13 @@ public class SkillServiceImpl implements SkillService {
 	}
 
 	@Override
-	public Skill getSkillByName(Skill skill) {
+	public Skill getSkillByName(String name) {
 		
-		if(skill == null || skill.getName().trim().equals("")) {
+		if(name == null || name.trim().equals("")) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
 		}
 		
-		Skill retrievedSkill = skillRepo.findSkillByName(skill.getName());
+		Skill retrievedSkill = skillRepo.findSkillByName(name);
 		
 		if(retrievedSkill == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No skill found with provided id");

@@ -36,15 +36,13 @@ public class SkillControllerImpl implements SkillController {
 	@Override
 	@GetMapping(value="/id/{id}", produces="application/json")
 	public Skill getSkillById(@PathVariable long id) {
-		Skill skill = new Skill(id);
-		return skillService.getSkillById(skill);
+		return skillService.getSkillById(id);
 	}
 
 	@Override
 	@GetMapping(value="/name/{name}", produces="application/json")
 	public Skill getSkillByName(@PathVariable String name) {
-		Skill skill = new Skill(name);
-		return skillService.getSkillByName(skill);
+		return skillService.getSkillByName(name);
 	}
 
 	@Override

@@ -19,10 +19,16 @@ import com.revature.coi.revanauts.repos.FeedbackRepository;
 public class FeedbackServiceImpl implements FeedbackService {
 
 	private FeedbackRepository feedbackRepo;
+	private SkillService skillService;
 	
 	@Autowired
 	public FeedbackServiceImpl(FeedbackRepository repo) {
 		this.feedbackRepo = repo;
+	}
+	
+	@Autowired
+	public void setSkillService(SkillService service) {
+		this.skillService = service;
 	}
 
 	@Override
@@ -43,13 +49,13 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public List<Feedback> getAllFeedbackBySkill(Feedback feedback) {
+	public List<Feedback> getAllFeedbackBySkill(long skillId) {
 		
-		if (feedback == null || feedback.getSkill() == null || feedback.getSkill().getId() > 0) {
+		if (skillId > 0) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
 		}
 		
-		return feedbackRepo.findFeedbackBySkill(feedback.getSkill());
+		return feedbackRepo.findFeedbackBySkill(skillId);
 		
 	}
 

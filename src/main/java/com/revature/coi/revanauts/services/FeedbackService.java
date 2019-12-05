@@ -8,7 +8,7 @@ public interface FeedbackService {
 	
 	List<Feedback> getAllFeedback();
 	List<Feedback> getAllFeedbackForAssociate(Feedback feedback);
-	List<Feedback> getAllFeedbackBySkill(Feedback feedback);
+	List<Feedback> getAllFeedbackBySkill(long skillId);
 	Feedback getFeedbackById(Feedback feedback);
 	Feedback addNewFeedback(Feedback feedback);
 	Feedback updateFeedback(Feedback feedback);

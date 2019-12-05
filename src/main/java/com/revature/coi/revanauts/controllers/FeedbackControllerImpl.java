@@ -24,7 +24,7 @@ public class FeedbackControllerImpl implements FeedbackController {
 	
 	@Autowired
 	public FeedbackControllerImpl(FeedbackService service) {
-		this.feedbackService = service;
+		this.feedbackService = service; 
 	}
 	
 	@Override
@@ -34,7 +34,7 @@ public class FeedbackControllerImpl implements FeedbackController {
 	}
 
 	@Override
-	@GetMapping(value="/associates/{associateId}", produces="application/json", consumes="application/json")
+	@GetMapping(value="/associates/{associateId}", produces="application/json")
 	public List<Feedback> getAllFeedbackForAssociate(@PathVariable long associateId) {
 		Feedback feedback = new Feedback();
 		feedback.setAssociateId(associateId);
@@ -42,9 +42,9 @@ public class FeedbackControllerImpl implements FeedbackController {
 	}
 
 	@Override
-	@GetMapping(value="/skills", produces="application/json", consumes="application/json")
-	public List<Feedback> getAllFeedbackBySkill(@RequestBody Feedback feedback) {
-		return feedbackService.getAllFeedbackBySkill(feedback);
+	@GetMapping(value="/skills/{skillId}", produces="application/json")
+	public List<Feedback> getAllFeedbackBySkill(@PathVariable long skillId) {
+		return feedbackService.getAllFeedbackBySkill(skillId);
 	}
 
 	@Override
