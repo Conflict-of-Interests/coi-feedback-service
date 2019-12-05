@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,14 +18,21 @@ public class Feedback {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private Long associateId;
+	@OneToOne
 	private Skill skill;
+	
+	private Long associateId;	
 	private LocalDateTime timeGiven;
 	private String notes;
 	private boolean isNudge;
 	
 	public Feedback() {
 		super();
+	}
+	
+	public Feedback(Long id) {
+		super();
+		this.id = id;
 	}
 
 	public Feedback(Long associateNudged, Skill skill, LocalDateTime timeGiven, String notes, boolean isNudge) {
