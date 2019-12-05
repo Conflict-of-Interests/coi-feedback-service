@@ -28,7 +28,7 @@ steps:
    'image', 
    'deployment', 
    'feedback-service', 
-   'feedback-service=gcr.io/$PROJECT_ID/feedback-service:$BRANCH_NAME-$COMMIT_SHA'
+   'feedback-service-ctr=gcr.io/$PROJECT_ID/feedback-service:$BRANCH_NAME-$COMMIT_SHA'
   ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
