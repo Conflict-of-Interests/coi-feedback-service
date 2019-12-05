@@ -17,7 +17,7 @@ public class Feedback {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private Long associateNudged;
+	private Long associateId;
 	private Skill skill;
 	private LocalDateTime timeGiven;
 	private String notes;
@@ -29,7 +29,7 @@ public class Feedback {
 
 	public Feedback(Long associateNudged, Skill skill, LocalDateTime timeGiven, String notes, boolean isNudge) {
 		super();
-		this.associateNudged = associateNudged;
+		this.associateId = associateNudged;
 		this.skill = skill;
 		this.timeGiven = timeGiven;
 		this.notes = notes;
@@ -40,16 +40,64 @@ public class Feedback {
 			boolean isNudge) {
 		super();
 		this.id = id;
-		this.associateNudged = associateNudged;
+		this.associateId = associateNudged;
 		this.skill = skill;
 		this.timeGiven = timeGiven;
 		this.notes = notes;
 		this.isNudge = isNudge;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getAssociateId() {
+		return associateId;
+	}
+
+	public void setAssociateId(Long associateId) {
+		this.associateId = associateId;
+	}
+
+	public Skill getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Skill skill) {
+		this.skill = skill;
+	}
+
+	public LocalDateTime getTimeGiven() {
+		return timeGiven;
+	}
+
+	public void setTimeGiven(LocalDateTime timeGiven) {
+		this.timeGiven = timeGiven;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public boolean isNudge() {
+		return isNudge;
+	}
+
+	public void setNudge(boolean isNudge) {
+		this.isNudge = isNudge;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(associateNudged, id, isNudge, notes, skill, timeGiven);
+		return Objects.hash(associateId, id, isNudge, notes, skill, timeGiven);
 	}
 
 	@Override
@@ -61,14 +109,14 @@ public class Feedback {
 		if (!(obj instanceof Feedback))
 			return false;
 		Feedback other = (Feedback) obj;
-		return Objects.equals(associateNudged, other.associateNudged) && Objects.equals(id, other.id)
+		return Objects.equals(associateId, other.associateId) && Objects.equals(id, other.id)
 				&& isNudge == other.isNudge && Objects.equals(notes, other.notes) && Objects.equals(skill, other.skill)
 				&& Objects.equals(timeGiven, other.timeGiven);
 	}
 
 	@Override
 	public String toString() {
-		return "Feedback [id=" + id + ", associateNudged=" + associateNudged + ", skill=" + skill + ", timeGiven="
+		return "Feedback [id=" + id + ", associateNudged=" + associateId + ", skill=" + skill + ", timeGiven="
 				+ timeGiven + ", notes=" + notes + ", isNudge=" + isNudge + "]";
 	}
 	
