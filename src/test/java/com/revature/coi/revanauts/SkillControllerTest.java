@@ -46,8 +46,18 @@ public class SkillControllerTest {
 	}
 	
 	@Test
-	public void getUserByIdSuccessAndHasNameTest() {
+	public void getSkillByIdSuccessAndHasNameTest() {
 		get("/skills/id/3").then().statusCode(200).body("name", equalTo("Critical Thinking"));
+	}
+	
+	@Test
+	public void getSkillByIdWithNegative() {
+		get("/skills/id/-340").then().assertThat().statusCode(400);
+	}
+	
+	@Test
+	public void getSkillByIdNotFoundTest() {
+		get("/skills/id/789").then().assertThat().statusCode(404);
 	}
 	
 	@Test
@@ -56,8 +66,23 @@ public class SkillControllerTest {
 	}
 	
 	@Test
-	public void getUserByNameSuccessAndHasNameTest() {
+	public void getSkillByNameSuccessAndHasNameTest() {
 		get("/skills/name/Critical Thinking").then().statusCode(200).body("name", equalTo("Critical Thinking"));
+	}
+	
+	@Test
+	public void getSkillByNameNotFoundTest() {
+		get("/skills/name/This does not exist").then().assertThat().statusCode(404);
+	}
+	
+	@Test
+	public void addSkillTest() {
+		with().body(new Skill(0L, "Another Skill Unique", "This is a skill", "You will be fine"))
+		.when()
+		.contentType(ContentType.JSON)
+		.request("POST","/skills")
+		.then()
+		.statusCode(200);
 	}
 	
 	@Test
