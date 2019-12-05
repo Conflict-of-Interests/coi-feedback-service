@@ -20,7 +20,7 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'kubernetes/']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=coi'
 - name: 'gcr.io/cloud-builders/kubectl'
   args: [
@@ -28,10 +28,10 @@ steps:
    'image', 
    'deployment', 
    'feedback-service', 
-   'feedback-service=gcr.io/$PROJECT_ID/feedback-service:$BRANCH_NAME-$COMMIT_SHA'
+   'feedback-service-ctr=gcr.io/$PROJECT_ID/feedback-service:$BRANCH_NAME-$COMMIT_SHA'
   ]
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=coi'
 images: [
    'gcr.io/$PROJECT_ID/feedback-service:$BRANCH_NAME-$COMMIT_SHA',
