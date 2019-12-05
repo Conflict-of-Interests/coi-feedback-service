@@ -32,22 +32,22 @@ spec:
           - name: DB_HOST
             valueFrom:
               secretKeyRef:
-                name: mysecret
+                name: coi-feedback-service-secrets
                 key: db-host
           - name: DB_USERNAME
             valueFrom:
               secretKeyRef:
-                name: mysecret
+                name: coi-feedback-service-secrets
                 key: db-username
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: mysecret
+                name: coi-feedback-service-secrets
                 key: db-password
           - name: DB_SCHEMA
             valueFrom:
               secretKeyRef:
-                name: mysecret
+                name: coi-feedback-service-secrets
                 key: db-schema
           #only one of these is necessary:
           - name: SPRING_PROFILES
