@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feedback-service
+spec:
+  selector:
+    matchLabels:
+      app: feedback-service
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: feedback-service
+    spec:
+      containers:
+      - image: 'gcr.io/origin-259413/feedback-service:latest'
+        name: feedback-service-ctr
+        ports:
+        - containerPort: 80
+        # resources:
+        #   requests:
+        #     cpu: 0.3
+        #   limits: 
+        #     cpu: 0.5
+        volumeMounts:
+          - name: cloudsql-instance-credentials
+            mountPath: /secrets/cloudsql
+            readOnly: true
+        env:
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: db-host
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: db-username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: db-password
+          - name: DB_SCHEMA
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: db-schema
+          #only one of these is necessary:
+          - name: SPRING_PROFILES
+            value: "kubernetes"
+          - name: SPRING_PROFILES_ACTIVE
+            value: "kubernetes"
+      - image: gcr.io/cloudsql-docker/gce-proxy:1.14
+        name: cloudsql-proxy
+        command: ["/cloud_sql_proxy",
+                  "-instances=conflict-of-interest-260814:us-central1:coi-db=tcp:5432",
+                  # If running on a VPC, the Cloud SQL proxy can connect via Private IP. See:
+                  # https://cloud.google.com/sql/docs/mysql/private-ip for more info.
+                  # "-ip_address_types=PRIVATE",
+                  "-credential_file=/secrets/cloudsql/credentials.json"]
+        volumeMounts:
+          - name: cloudsql-instance-credentials
+            mountPath: /secrets/cloudsql
+            readOnly: true
+      # [START volumes]
+      volumes:
+        - name: cloudsql-instance-credentials
+          secret:
+            secretName: cloudsql-instance-credentials
+      # [END volumes]
