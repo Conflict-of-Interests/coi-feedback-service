@@ -40,7 +40,7 @@ public class SkillServiceImpl implements SkillService {
 		Optional<Skill> _skill = skillRepo.findById(skill.getId());
 		
 		if(!_skill.isPresent()) {
-			throw new ResourceNotFoundException("No feedback found with provided id");
+			throw new ResourceNotFoundException("No skill found with provided id");
 		}
 		
 		return _skill.get();
@@ -57,7 +57,7 @@ public class SkillServiceImpl implements SkillService {
 		Skill retrievedSkill = skillRepo.findSkillByName(skill.getName());
 		
 		if(retrievedSkill == null) {
-			throw new ResourceNotFoundException("No feedback found with provided id");
+			throw new ResourceNotFoundException("No skill found with provided id");
 		}
 		
 		return retrievedSkill;
@@ -78,6 +78,12 @@ public class SkillServiceImpl implements SkillService {
 
 	@Override
 	public Skill updateSkill(Skill skill) {
+
+		if(skill.getId() <= 0) {
+			throw new BadRequestException("Invalid value provided in request");
+		} else if (!skillRepo.findById(skill.getId()).isPresent()) {
+			throw new ResourceNotFoundException("No skill found with provided id");
+		}
 		
 		Skill updatedSkill = skillRepo.save(skill);
 		
