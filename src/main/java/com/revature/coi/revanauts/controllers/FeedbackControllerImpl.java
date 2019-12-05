@@ -48,7 +48,7 @@ public class FeedbackControllerImpl implements FeedbackController {
 	}
 
 	@Override
-	@GetMapping(value="/id/{id}", produces="application/json", consumes="application/json")
+	@GetMapping(value="/id/{id}", produces="application/json")
 	public Feedback getFeedbackById(@PathVariable long id) {
 		Feedback feedback = new Feedback(id);
 		return feedbackService.getFeedbackById(feedback);

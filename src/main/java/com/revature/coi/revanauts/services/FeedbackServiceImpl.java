@@ -19,16 +19,10 @@ import com.revature.coi.revanauts.repos.FeedbackRepository;
 public class FeedbackServiceImpl implements FeedbackService {
 
 	private FeedbackRepository feedbackRepo;
-	private SkillService skillService;
 	
 	@Autowired
 	public FeedbackServiceImpl(FeedbackRepository repo) {
 		this.feedbackRepo = repo;
-	}
-	
-	@Autowired
-	public void setSkillService(SkillService service) {
-		this.skillService = service;
 	}
 
 	@Override
