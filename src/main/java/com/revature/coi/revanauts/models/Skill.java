@@ -20,6 +20,16 @@ public class Skill {
 	public Skill() {
 		super();
 	}
+	
+	public Skill(Long id) {
+		super();
+		this.id = id;
+	}
+
+	public Skill(String name) {
+		super();
+		this.name = name;
+	}
 
 	public Skill(Long id, String name, String description, String improvementTips) {
 		super();

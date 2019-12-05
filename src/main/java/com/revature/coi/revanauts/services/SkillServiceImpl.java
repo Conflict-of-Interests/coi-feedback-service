@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.coi.revanauts.exceptions.BadRequestException;
+import com.revature.coi.revanauts.exceptions.ResourceCreationException;
 import com.revature.coi.revanauts.exceptions.ResourceNotFoundException;
+import com.revature.coi.revanauts.exceptions.ResourceUpdateException;
 import com.revature.coi.revanauts.models.Skill;
 import com.revature.coi.revanauts.repos.SkillRepository;
 
@@ -47,20 +49,44 @@ public class SkillServiceImpl implements SkillService {
 
 	@Override
 	public Skill getSkillByName(Skill skill) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(skill == null || skill.getName().trim().equals("")) {
+			throw new BadRequestException("Invalid value provided in request");
+		}
+		
+		Skill retrievedSkill = skillRepo.findSkillByName(skill.getName());
+		
+		if(retrievedSkill == null) {
+			throw new ResourceNotFoundException("No feedback found with provided id");
+		}
+		
+		return retrievedSkill;
 	}
 
 	@Override
 	public Skill addNewSkill(Skill skill) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Skill persistedSkill = skillRepo.save(skill);
+		
+		if(persistedSkill.getId() == 0) {
+			throw new ResourceCreationException("There was a problem during resource creation");
+		}
+		
+		return persistedSkill;
+		
 	}
 
 	@Override
 	public Skill updateSkill(Skill skill) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Skill updatedSkill = skillRepo.save(skill);
+		
+		if(updatedSkill.getId() == 0) {
+			throw new ResourceUpdateException("There was a problem during resource update");
+		}
+		
+		return updatedSkill;
+		
 	}
 
 }

@@ -7,8 +7,8 @@ import com.revature.coi.revanauts.models.Skill;
 public interface SkillController {
 	
 	List<Skill> getAllSkills();
-	Skill getSkillById(Skill skill);
-	Skill getSkillByName(Skill skill);
+	Skill getSkillById(long id);
+	Skill getSkillByName(String name);
 	Skill addNewSkill(Skill skill);
 	Skill updateSkill(Skill skill);
 
