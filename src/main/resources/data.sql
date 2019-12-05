@@ -6,5 +6,5 @@ INSERT INTO SKILL (DESCRIPTION, IMPROVEMENT_TIPS, NAME) VALUES
 	('Collaboration, Empathy, Networking, Team Building, Interpersonal Skills, Facilitation', '', 'Teamwork');
 	
 INSERT INTO FEEDBACK (ASSOCIATE_ID, IS_NUDGE, NOTES, TIME_GIVEN, SKILL_ID) VALUES
-	(1, true, 'Talk Better', {ts '2012-09-17 18:47:52.69'}, 1);
+	(1, true, 'Talk Better', 1575573113105, 1);
 	

@@ -1,6 +1,5 @@
 package com.revature.coi.revanauts.models;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -22,7 +21,7 @@ public class Feedback {
 	private Skill skill;
 	
 	private Long associateId;	
-	private LocalDateTime timeGiven;
+	private long timeGiven;
 	private String notes;
 	private boolean isNudge;
 	
@@ -35,7 +34,7 @@ public class Feedback {
 		this.id = id;
 	}
 
-	public Feedback(Long associateNudged, Skill skill, LocalDateTime timeGiven, String notes, boolean isNudge) {
+	public Feedback(Long associateNudged, Skill skill, long timeGiven, String notes, boolean isNudge) {
 		super();
 		this.associateId = associateNudged;
 		this.skill = skill;
@@ -44,7 +43,7 @@ public class Feedback {
 		this.isNudge = isNudge;
 	}
 
-	public Feedback(Long id, Long associateNudged, Skill skill, LocalDateTime timeGiven, String notes,
+	public Feedback(Long id, Long associateNudged, Skill skill, long timeGiven, String notes,
 			boolean isNudge) {
 		super();
 		this.id = id;
@@ -79,11 +78,11 @@ public class Feedback {
 		this.skill = skill;
 	}
 
-	public LocalDateTime getTimeGiven() {
+	public long getTimeGiven() {
 		return timeGiven;
 	}
 
-	public void setTimeGiven(LocalDateTime timeGiven) {
+	public void setTimeGiven(long timeGiven) {
 		this.timeGiven = timeGiven;
 	}
 

@@ -1,6 +1,5 @@
 package com.revature.coi.revanauts.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.revature.coi.revanauts.models.Feedback;
+import com.revature.coi.revanauts.models.Skill;
 import com.revature.coi.revanauts.repos.FeedbackRepository;
 
 @Transactional
@@ -19,10 +19,16 @@ import com.revature.coi.revanauts.repos.FeedbackRepository;
 public class FeedbackServiceImpl implements FeedbackService {
 
 	private FeedbackRepository feedbackRepo;
+	private SkillService skillService;
 	
 	@Autowired
 	public FeedbackServiceImpl(FeedbackRepository repo) {
 		this.feedbackRepo = repo;
+	}
+	
+	@Autowired
+	public void setSkillService(SkillService service) {
+		this.skillService = service;
 	}
 
 	@Override
@@ -45,11 +51,12 @@ public class FeedbackServiceImpl implements FeedbackService {
 	@Override
 	public List<Feedback> getAllFeedbackBySkill(long skillId) {
 		
-		if (skillId > 0) {
+		if (skillId <= 0) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
 		}
 		
-		return feedbackRepo.findFeedbackBySkill(skillId);
+		Skill skill = skillService.getSkillById(skillId);
+		return feedbackRepo.findFeedbackBySkill(skill);
 		
 	}
 
@@ -73,7 +80,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	@Override
 	public Feedback addNewFeedback(Feedback feedback) {
 		
-		feedback.setTimeGiven(LocalDateTime.now());
+		feedback.setTimeGiven(System.currentTimeMillis());
 		Feedback persistedFeedback = feedbackRepo.save(feedback);
 		
 		if(persistedFeedback.getId() == 0) {
