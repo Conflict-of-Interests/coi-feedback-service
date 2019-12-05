@@ -64,9 +64,12 @@ public class FeedbackServiceImpl implements FeedbackService {
 		
 		Skill skill = skillService.getSkillById(skillId);
 		List<Feedback> associateFeedback = feedbackRepo.findFeedbackBySkill(skill);
+		
 		if(associateFeedback.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No feedback found for provided associate id");
 		}
+		
+		return associateFeedback;
 		
 	}
 
