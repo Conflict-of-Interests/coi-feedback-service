@@ -15,7 +15,7 @@ spec:
         app: feedback-service
     spec:
       containers:
-      - image: 'gcr.io/origin-259413/feedback-service:latest'
+      - image: 'gcr.io/conflict-of-interest-260814/feedback-service:latest'
         name: feedback-service-ctr
         ports:
         - containerPort: 80
@@ -44,11 +44,6 @@ spec:
               secretKeyRef:
                 name: coi-feedback-service-secrets
                 key: db-password
-          - name: DB_SCHEMA
-            valueFrom:
-              secretKeyRef:
-                name: coi-feedback-service-secrets
-                key: db-schema
           #only one of these is necessary:
           - name: SPRING_PROFILES
             value: "kubernetes"
