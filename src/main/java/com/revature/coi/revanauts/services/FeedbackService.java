@@ -10,7 +10,7 @@ public interface FeedbackService {
 	List<Feedback> getAllFeedbackForAssociate(Feedback feedback);
 	List<Feedback> getAllFeedbackBySkill(Feedback feedback);
 	Feedback getFeedbackById(Feedback feedback);
-	boolean addNewFeedback(Feedback feedback);
-	void updateFeedback(Feedback feedback);
+	Feedback addNewFeedback(Feedback feedback);
+	Feedback updateFeedback(Feedback feedback);
 	
 }
