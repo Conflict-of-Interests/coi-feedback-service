@@ -1,5 +1,5 @@
 package com.revature.coi.revanauts.services;
 
-public interface FeedbackService {
+public class FeedbackServiceImpl {
 
 }
