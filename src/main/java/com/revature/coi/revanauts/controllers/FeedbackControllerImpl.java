@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,7 +47,8 @@ public class FeedbackControllerImpl implements FeedbackController {
 
 	@Override
 	@GetMapping(value="/id/{id}", produces="application/json", consumes="application/json")
-	public Feedback getFeedbackById(@RequestBody Feedback feedback) {
+	public Feedback getFeedbackById(@PathVariable long id) {
+		Feedback feedback = new Feedback(id);
 		return feedbackService.getFeedbackById(feedback);
 	}
 

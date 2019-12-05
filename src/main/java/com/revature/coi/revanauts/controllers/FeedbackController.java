@@ -9,7 +9,7 @@ public interface FeedbackController {
 	List<Feedback> getAllFeedback();
 	List<Feedback> getAllFeedbackForAssociate(Feedback feedback);
 	List<Feedback> getAllFeedbackBySkill(Feedback feedback);
-	Feedback getFeedbackById(Feedback feedback);
+	Feedback getFeedbackById(long id);
 	Feedback addNewFeedback(Feedback feedback);
 	Feedback updateFeedback(Feedback feedback);
 
