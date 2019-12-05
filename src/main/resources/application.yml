@@ -15,6 +15,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 server:
   port: 2020
 
@@ -34,7 +38,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         temp.use_jdbc_metadata_defaults: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     database: postgresql
 server:
   port: 80
