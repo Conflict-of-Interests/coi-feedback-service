@@ -44,6 +44,11 @@ spec:
               secretKeyRef:
                 name: coi-feedback-service-secrets
                 key: db-password
+          - name: DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: coi-feedback-service-secrets
+                key: db-database
           #only one of these is necessary:
           - name: SPRING_PROFILES
             value: "kubernetes"
