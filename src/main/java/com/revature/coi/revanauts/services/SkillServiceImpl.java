@@ -4,13 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
-import com.revature.coi.revanauts.exceptions.BadRequestException;
-import com.revature.coi.revanauts.exceptions.ResourceCreationException;
-import com.revature.coi.revanauts.exceptions.ResourceNotFoundException;
-import com.revature.coi.revanauts.exceptions.ResourceUpdateException;
 import com.revature.coi.revanauts.models.Skill;
 import com.revature.coi.revanauts.repos.SkillRepository;
 
@@ -27,20 +25,28 @@ public class SkillServiceImpl implements SkillService {
 
 	@Override
 	public List<Skill> getAllSkills() {
-		return skillRepo.findAll();
+		
+		List<Skill> skills = skillRepo.findAll();
+		
+		if(skills.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No resources found.");
+		}
+		
+		return skills;
+		
 	}
 
 	@Override
 	public Skill getSkillById(Skill skill) {
 		
 		if(skill == null || skill.getId() <= 0) {
-			throw new BadRequestException("Invalid value provided in request");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
 		}
 		
 		Optional<Skill> _skill = skillRepo.findById(skill.getId());
 		
 		if(!_skill.isPresent()) {
-			throw new ResourceNotFoundException("No skill found with provided id");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No skill found with provided id");
 		}
 		
 		return _skill.get();
@@ -51,13 +57,13 @@ public class SkillServiceImpl implements SkillService {
 	public Skill getSkillByName(Skill skill) {
 		
 		if(skill == null || skill.getName().trim().equals("")) {
-			throw new BadRequestException("Invalid value provided in request");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
 		}
 		
 		Skill retrievedSkill = skillRepo.findSkillByName(skill.getName());
 		
 		if(retrievedSkill == null) {
-			throw new ResourceNotFoundException("No skill found with provided id");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No skill found with provided id");
 		}
 		
 		return retrievedSkill;
@@ -69,7 +75,7 @@ public class SkillServiceImpl implements SkillService {
 		Skill persistedSkill = skillRepo.save(skill);
 		
 		if(persistedSkill.getId() == 0) {
-			throw new ResourceCreationException("There was a problem during resource creation");
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "There was a problem during resource creation");
 		}
 		
 		return persistedSkill;
@@ -80,15 +86,15 @@ public class SkillServiceImpl implements SkillService {
 	public Skill updateSkill(Skill skill) {
 
 		if(skill.getId() <= 0) {
-			throw new BadRequestException("Invalid value provided in request");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
 		} else if (!skillRepo.findById(skill.getId()).isPresent()) {
-			throw new ResourceNotFoundException("No skill found with provided id");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No skill found with provided id");
 		}
 		
 		Skill updatedSkill = skillRepo.save(skill);
 		
 		if(updatedSkill.getId() == 0) {
-			throw new ResourceUpdateException("There was a problem during resource update");
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "There was a problem during resource update");
 		}
 		
 		return updatedSkill;
