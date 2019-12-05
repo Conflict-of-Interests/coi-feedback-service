@@ -33,7 +33,14 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	@Override
 	public List<Feedback> getAllFeedback() {
-		return feedbackRepo.findAll();
+		
+		List<Feedback> feedback = feedbackRepo.findAll();
+		
+		if(feedback.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No feedback found for provided associate id");
+		}
+		
+		return feedback;
 	}
 
 	@Override
@@ -56,7 +63,10 @@ public class FeedbackServiceImpl implements FeedbackService {
 		}
 		
 		Skill skill = skillService.getSkillById(skillId);
-		return feedbackRepo.findFeedbackBySkill(skill);
+		List<Feedback> associateFeedback = feedbackRepo.findFeedbackBySkill(skill);
+		if(associateFeedback.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No feedback found for provided associate id");
+		}
 		
 	}
 
