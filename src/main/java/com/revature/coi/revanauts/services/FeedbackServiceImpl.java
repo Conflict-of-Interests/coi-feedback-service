@@ -52,7 +52,13 @@ public class FeedbackServiceImpl implements FeedbackService {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid associate id provided");
 		}
 		
-		return feedbackRepo.findFeedbackByAssociateId(associateId);
+		List<Feedback> associateFeedback = feedbackRepo.findFeedbackByAssociateId(associateId);
+		
+		if(associateFeedback.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No feedback found for provided associate id");
+		}
+		
+		return associateFeedback;
 	}
 
 	@Override
@@ -63,13 +69,13 @@ public class FeedbackServiceImpl implements FeedbackService {
 		}
 		
 		Skill skill = skillService.getSkillById(skillId);
-		List<Feedback> associateFeedback = feedbackRepo.findFeedbackBySkill(skill);
+		List<Feedback> skillFeedback = feedbackRepo.findFeedbackBySkill(skill);
 		
-		if(associateFeedback.isEmpty()) {
+		if(skillFeedback.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No feedback found for provided associate id");
 		}
 		
-		return associateFeedback;
+		return skillFeedback;
 		
 	}
 

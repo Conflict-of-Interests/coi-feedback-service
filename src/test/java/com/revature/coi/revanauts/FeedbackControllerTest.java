@@ -62,4 +62,19 @@ public class FeedbackControllerTest {
 		get("/feedback/associates/100000").then().assertThat().statusCode(404);
 	}
 	
+	@Test
+	public void getSkillFeedbackWithValidSkillIdTest() {
+		get("/feedback/skills/1").then().assertThat().statusCode(200);
+	}
+	
+	@Test
+	public void getSkillFeedbackWithInvalidSkillIdTest() {
+		get("/feedback/skills/0").then().assertThat().statusCode(400);
+	}
+	
+	@Test
+	public void getSkillFeedbackWithValidSkillIdNotFoundTest() {
+		get("/feedback/skills/100000").then().assertThat().statusCode(404);
+	}
+	
 }
