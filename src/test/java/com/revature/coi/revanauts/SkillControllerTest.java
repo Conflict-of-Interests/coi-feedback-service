@@ -87,7 +87,7 @@ public class SkillControllerTest {
 	
 	@Test
 	public void addSkillThatAlreadyExistTest() {
-		with().body(new Skill(0L, "Another Skill Unique", "This is a skill", "You will be fine"))
+		with().body(new Skill(0L, "Critical Thinking", "This is a skill", "You will be fine"))
 		.when()
 		.contentType(ContentType.JSON)
 		.request("POST","/skills")
