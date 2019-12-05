@@ -72,6 +72,12 @@ public class SkillServiceImpl implements SkillService {
 	@Override
 	public Skill addNewSkill(Skill skill) {
 		
+		Skill shouldNotExist = skillRepo.findSkillByName(skill.getName());
+		
+		if(shouldNotExist != null) {
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "There is already a skill in the data source with that name.");
+		}
+		
 		Skill persistedSkill = skillRepo.save(skill);
 		
 		if(persistedSkill.getId() == 0) {
