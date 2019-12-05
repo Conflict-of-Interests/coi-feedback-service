@@ -34,8 +34,10 @@ public class FeedbackControllerImpl implements FeedbackController {
 	}
 
 	@Override
-	@GetMapping(value="/associates", produces="application/json", consumes="application/json")
-	public List<Feedback> getAllFeedbackForAssociate(@RequestBody Feedback feedback) {
+	@GetMapping(value="/associates/{associateId}", produces="application/json", consumes="application/json")
+	public List<Feedback> getAllFeedbackForAssociate(@PathVariable long associateId) {
+		Feedback feedback = new Feedback();
+		feedback.setAssociateId(associateId);
 		return feedbackService.getAllFeedbackForAssociate(feedback);
 	}
 

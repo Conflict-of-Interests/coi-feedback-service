@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,28 +34,28 @@ public class SkillControllerImpl implements SkillController {
 	}
 
 	@Override
-	@GetMapping(value="/id/{id}", produces="application/json", consumes="application/json")
+	@GetMapping(value="/id/{id}", produces="application/json")
 	public Skill getSkillById(@PathVariable long id) {
 		Skill skill = new Skill(id);
 		return skillService.getSkillById(skill);
 	}
 
 	@Override
-	@GetMapping(value="/name/{name}", produces="application/json", consumes="application/json")
+	@GetMapping(value="/name/{name}", produces="application/json")
 	public Skill getSkillByName(@PathVariable String name) {
 		Skill skill = new Skill(name);
-		return skillService.getSkillById(skill);
+		return skillService.getSkillByName(skill);
 	}
 
 	@Override
 	@PostMapping(produces="application/json", consumes="application/json")
-	public Skill addNewSkill(Skill skill) {
+	public Skill addNewSkill(@RequestBody Skill skill) {
 		return skillService.addNewSkill(skill);
 	}
 
 	@Override
 	@PutMapping(produces="application/json", consumes="application/json")
-	public Skill updateSkill(Skill skill) {
+	public Skill updateSkill(@RequestBody Skill skill) {
 		return skillService.updateSkill(skill);
 	}
 	
