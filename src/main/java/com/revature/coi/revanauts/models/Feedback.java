@@ -127,5 +127,4 @@ public class Feedback {
 				+ timeGiven + ", notes=" + notes + ", isNudge=" + isNudge + "]";
 	}
 	
-
 }
