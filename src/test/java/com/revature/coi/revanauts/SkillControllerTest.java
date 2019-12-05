@@ -86,6 +86,16 @@ public class SkillControllerTest {
 	}
 	
 	@Test
+	public void addSkillThatAlreadyExistTest() {
+		with().body(new Skill(0L, "Another Skill Unique", "This is a skill", "You will be fine"))
+		.when()
+		.contentType(ContentType.JSON)
+		.request("POST","/skills")
+		.then()
+		.statusCode(409);
+	}
+	
+	@Test
 	public void updateSkillTest() {
 		with().body(new Skill(4L, "Test Skill", "This is a skill", "You will be fine"))
 		.when()
