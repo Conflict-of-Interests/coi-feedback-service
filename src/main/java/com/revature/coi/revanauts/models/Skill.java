@@ -1,5 +1,6 @@
 package com.revature.coi.revanauts.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,10 @@ public class Skill {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(unique=true)
 	private String name;
+	
 	private String description;
 	private String improvementTips;
 	
