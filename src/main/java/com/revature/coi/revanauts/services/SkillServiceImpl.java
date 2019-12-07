@@ -72,6 +72,10 @@ public class SkillServiceImpl implements SkillService {
 	@Override
 	public Skill addNewSkill(Skill skill) {
 		
+		if (!isSkillValid(skill)) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid skill object provided in request");
+		}
+		
 		Skill shouldNotExist = skillRepo.findSkillByName(skill.getName());
 		
 		if(shouldNotExist != null) {
@@ -91,10 +95,12 @@ public class SkillServiceImpl implements SkillService {
 	@Override
 	public Skill updateSkill(Skill skill) {
 
-		if(skill.getId() <= 0) {
+		if (skill == null || skill.getId() <= 0 || !isSkillValid(skill)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
 		} else if (!skillRepo.findById(skill.getId()).isPresent()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No skill found with provided id");
+		} else if (skillRepo.findSkillByName(skill.getName()) == null) {
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "There is already a skill in the data source with that name.");
 		}
 		
 		Skill updatedSkill = skillRepo.save(skill);
@@ -105,6 +111,25 @@ public class SkillServiceImpl implements SkillService {
 		
 		return updatedSkill;
 		
+	}
+	
+	@Override
+	public void deleteSkillById(long id) {
+		
+		if (id <= 0) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value provided in request");
+		}
+		
+		skillRepo.deleteById(id);
+		
+	}
+	
+	private boolean isSkillValid(Skill skill) {
+		if (skill == null) return false;
+		if (skill.getName() == null || skill.getName().trim().equals("")) return false;
+		if (skill.getDescription() == null || skill.getDescription().trim().equals("")) return false;
+		if (skill.getImprovementTips() == null || skill.getImprovementTips().trim().equals("")) return false;
+		return true;
 	}
 
 }
