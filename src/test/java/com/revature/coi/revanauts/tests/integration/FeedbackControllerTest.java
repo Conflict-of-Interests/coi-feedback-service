@@ -1,4 +1,4 @@
-package com.revature.coi.revanauts;
+package com.revature.coi.revanauts.tests.integration;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.with;
