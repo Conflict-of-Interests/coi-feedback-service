@@ -32,4 +32,4 @@ build/
 
 .attach_pid*
 
-app.log
+src/main/resources/logs/**
