@@ -11,5 +11,5 @@ public interface SkillController {
 	Skill getSkillByName(String name);
 	Skill addNewSkill(Skill skill);
 	Skill updateSkill(Skill skill);
-
+	void deleteSkillById(long id);
 }
