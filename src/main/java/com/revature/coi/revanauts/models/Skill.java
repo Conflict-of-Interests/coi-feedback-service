@@ -7,18 +7,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+
 @Entity
-@Table(name="SKILL")
+@Table(name = "SKILL")
 public class Skill {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(unique=true)
+	@NotNull
+	@Column(unique = true, nullable = false)
 	private String name;
 	
+	@NotNull
+	@Column(nullable = false)
 	private String description;
+	
+	@NotNull
+	@Column(nullable = false)
 	private String improvementTips;
 	
 	public Skill() {
